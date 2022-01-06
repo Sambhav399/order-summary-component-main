@@ -1,0 +1,161 @@
+:root {
+    /* Primary Colors */
+    --theme        : hsl(245, 75%, 52%);
+    --themeMuted   : hsl(225, 100%, 94%);
+    --activeState  : hsl(245, 75%, 52%, 0.75);
+    --buttonShadow : hsl(245, 75%, 52%, 0.3);
+    /* Neutral Colors */
+    --blue         : hsl(225, 100%, 98%);
+    --blueMuted    : hsl(224, 23%, 55%);
+    --blueMutedDark: hsl(223, 47%, 23%);
+    /* Initial Value */
+    --init         : 0.5rem;
+    --transition   : 0.2s;
+}
+
+* {
+    margin : 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    font-family     : 'Red Hat Display', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    background      : var(--themeMuted) url('./images/pattern-background-desktop.svg') no-repeat;
+    background-size : contain;
+    display         : grid;
+    height          : 100vh;
+}
+
+/* Common Style or Global Style */
+
+button {
+    display      : block;
+    font-size    : initial;
+    font-weight  : 700;
+    cursor       : pointer;
+    font-family  : inherit;
+    border       : none;
+    padding      : calc(var(--init) * 1.5);
+    border-radius: var(--init);
+    width        : 100%;
+    background   : none;
+}
+
+img,
+svg {
+    display: block;
+}
+
+p {
+    color    : var(--blueMuted);
+    font-size: calc(var(--init)*2);
+    /* Sets 16px for paragraph */
+}
+
+.textCenter {
+    text-align: center;
+}
+
+/* Custom CSS */
+
+.card {
+    width        : clamp(0%, 420px, 90%);
+    margin       : auto;
+    background   : #ffffff;
+    border-radius: calc(var(--init)*2);
+    overflow     : hidden;
+}
+
+.card .cardImage img {
+    width : 100%;
+    height: auto;
+}
+
+.card .cardBody {
+    padding       : calc(var(--init) * 6);
+    display       : flex;
+    flex-direction: column;
+    gap           : calc(var(--init)*2);
+}
+
+.card .cardBody .title {
+    font-weight  : 900;
+    line-height  : 1;
+    color        : var(--blueMutedDark);
+    margin-bottom: calc(var(--init) * 0.5);
+}
+
+.card .cardBody .planCard {
+    display      : flex;
+    align-items  : center;
+    gap          : calc(var(--init)*2);
+    background   : var(--blue);
+    padding      : calc(var(--init) * 2);
+    border-radius: var(--init);
+}
+
+.card .cardBody .planCard .planCard_data {
+    flex: 1;
+}
+
+.card .cardBody .planCard .changeLink {
+    color      : var(--theme);
+    font-weight: 700;
+    transition : var(--transition) color ease;
+}
+
+button.proceed {
+    color     : #ffffff;
+    background: var(--theme);
+    box-shadow: 0 var(--init) calc(var(--init)*3) 0 var(--buttonShadow);
+    transition: var(--transition) background ease;
+}
+
+button.cancel {
+    color     : var(--blueMuted);
+    transition: var(--transition) color ease;
+}
+
+/* Hover & Active States */
+
+.card .cardBody .planCard .changeLink:hover,
+.card .cardBody .planCard .changeLink:active {
+    text-decoration: none;
+    color          : var(--activeState);
+    transition     : var(--transition) color ease;
+}
+
+button.proceed:hover,
+button.proceed:active {
+    background: var(--activeState);
+    transition: var(--transition) background ease;
+}
+
+button.cancel:hover,
+button.cancel:active {
+    color     : var(--blueMutedDark);
+    transition: var(--transition) color ease;
+}
+
+/* Used both States :active and :hover beacuse */
+/* design folder says active-states and */
+/* project brief says on hover. */
+
+@media (max-width: 375px) {
+    body {
+        background: url('./images/pattern-background-mobile.svg') no-repeat;
+        background-size: contain;
+    }
+
+    .card .cardBody {
+        padding: calc(var(--init) * 3);
+    }
+}
