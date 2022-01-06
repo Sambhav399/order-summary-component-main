@@ -14,24 +14,22 @@
 }
 
 * {
-    margin : 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    margin                     : 0;
+    padding                    : 0;
+    -webkit-box-sizing         : border-box;
+    -moz-box-sizing            : border-box;
+    box-sizing                 : border-box;
     -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
-    font-family     : 'Red Hat Display', sans-serif;
-    -webkit-font-smoothing: antialiased;
+    font-family            : 'Red Hat Display', sans-serif;
+    -webkit-font-smoothing : antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-rendering: geometricPrecision;
-    background      : var(--themeMuted) url('./images/pattern-background-desktop.svg') no-repeat;
-    background-size : contain;
-    display         : grid;
-    height          : 100vh;
+    text-rendering         : geometricPrecision;
+    background             : var(--themeMuted) url('./images/pattern-background-desktop.svg') no-repeat;
+    background-size        : contain;
 }
 
 /* Common Style or Global Style */
@@ -60,15 +58,29 @@ p {
     /* Sets 16px for paragraph */
 }
 
+a {
+    color      : var(--theme);
+    font-weight: 700;
+    transition : var(--transition) color ease;
+}
+
 .textCenter {
     text-align: center;
 }
 
 /* Custom CSS */
 
-.card {
+.designContainer {
+    display      : grid;
+    place-items  : center;
+    align-content: center;
+    height       : 100vh;
     width        : clamp(0%, 420px, 90%);
+    gap          : calc(var(--init)*2);
     margin       : auto;
+}
+
+.card {
     background   : #ffffff;
     border-radius: calc(var(--init)*2);
     overflow     : hidden;
@@ -106,12 +118,6 @@ p {
     flex: 1;
 }
 
-.card .cardBody .planCard .changeLink {
-    color      : var(--theme);
-    font-weight: 700;
-    transition : var(--transition) color ease;
-}
-
 button.proceed {
     color     : #ffffff;
     background: var(--theme);
@@ -126,8 +132,8 @@ button.cancel {
 
 /* Hover & Active States */
 
-.card .cardBody .planCard .changeLink:hover,
-.card .cardBody .planCard .changeLink:active {
+a:hover,
+a:active {
     text-decoration: none;
     color          : var(--activeState);
     transition     : var(--transition) color ease;
@@ -151,11 +157,28 @@ button.cancel:active {
 
 @media (max-width: 375px) {
     body {
-        background: url('./images/pattern-background-mobile.svg') no-repeat;
+        background     : url('./images/pattern-background-mobile.svg') no-repeat;
         background-size: contain;
     }
 
     .card .cardBody {
         padding: calc(var(--init) * 3);
     }
+}
+
+/* Additional Attribution Style */
+
+.attribution {
+    background   : #fff;
+    padding      : calc(var(--init) * 2);
+    border-radius: calc(var(--init)*2);
+}
+
+.attribution {
+    width     : 100%;
+    text-align: center;
+}
+
+.attribution p:not(:last-child) {
+    margin-bottom: var(--init);
 }
